@@ -1,0 +1,34 @@
+{
+  "name": "fantasy-laws",
+  "version": "0.0.0",
+  "description": "Property-based tests for Fantasy Land -compliant algebraic data types",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fantasyland/fantasy-laws.git"
+  },
+  "files": [
+    "/src/",
+    "/LICENSE",
+    "/README.md",
+    "/index.js",
+    "/package.json"
+  ],
+  "dependencies": {
+    "fantasy-land": "3.5.x",
+    "jsverify": "0.8.x",
+    "sanctuary-type-classes": "8.1.x"
+  },
+  "devDependencies": {
+    "sanctuary-scripts": "1.0.x"
+  },
+  "peerDependencies": {
+    "jsverify": "0.8.x"
+  },
+  "scripts": {
+    "doctest": "sanctuary-doctest",
+    "lint": "sanctuary-lint",
+    "release": "sanctuary-release",
+    "test": "npm run lint && sanctuary-test && npm run doctest"
+  }
+}
