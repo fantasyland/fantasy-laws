@@ -1,0 +1,11 @@
+sudo: false
+language: node_js
+node_js:
+  - "4"
+  - "6"
+  - "8"
+before_install:
+  - if [ "$TRAVIS_NODE_VERSION" = 4 ] ; then npm install --global npm@3 ; fi
+before_script:
+  - git fetch origin refs/heads/master:refs/heads/master
+  - if [ "$TRAVIS_PULL_REQUEST_BRANCH" ] ; then git checkout -b "$TRAVIS_PULL_REQUEST_BRANCH" ; fi
