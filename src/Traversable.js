@@ -20,11 +20,12 @@ module.exports = function(equals) {
                     traverse(G)(t)(u));
     }),
 
-    //  traverse F F u = of F u
+    //  traverse F pure u = pure u
     identity: assert.forall2(function(F, u) {
+      var pure = of(F);
       return Z.Traversable.test(u) &&
-             equals(traverse(F)(F)(u),
-                    of(F)(u));
+             equals(traverse(F)(pure)(u),
+                    pure(u));
     }),
 
     //  traverse C C u = C (traverse G identity <$> traverse F identity u)
