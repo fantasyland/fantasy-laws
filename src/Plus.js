@@ -14,6 +14,7 @@ module.exports = function(equals, P) {
     //  zero <|> x = x
     leftIdentity: assert.forall1(function(x) {
       return Z.Plus.test(x) &&
+             Z.Plus.test(zero) &&
              equals(alt(zero)(x),
                     x);
     }),
@@ -21,13 +22,15 @@ module.exports = function(equals, P) {
     //  x <|> zero = x
     rightIdentity: assert.forall1(function(x) {
       return Z.Plus.test(x) &&
+             Z.Plus.test(zero) &&
              equals(alt(x)(zero),
                     x);
     }),
 
     //  f <$> zero = zero
     annihilation: assert.forall1(function(f) {
-      return equals(map(f)(zero),
+      return Z.Plus.test(zero) &&
+             equals(map(f)(zero),
                     zero);
     })
 

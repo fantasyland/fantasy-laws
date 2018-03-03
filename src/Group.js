@@ -12,6 +12,7 @@ module.exports = function(equals, G) {
     //  invert <> g = empty
     leftInverse: assert.forall1(function(g) {
       return Z.Group.test(g) &&
+             Z.Group.test(empty) &&
              equals(Z.concat(Z.invert(g), g),
                     empty);
     }),
@@ -19,6 +20,7 @@ module.exports = function(equals, G) {
     //  g <> invert = empty
     rightInverse: assert.forall1(function(g) {
       return Z.Group.test(g) &&
+             Z.Group.test(empty) &&
              equals(Z.concat(g, Z.invert(g)),
                     empty);
     })

@@ -14,6 +14,8 @@ module.exports = function(equals, A) {
     //  (f <|> g) <*> x = (f <*> x) <|> (g <*> x)
     distributivity: assert.forall3(function(x, f, g) {
       return Z.Alternative.test(x) &&
+             Z.Alternative.test(f) &&
+             Z.Alternative.test(g) &&
              equals(ap(alt(f)(g))(x),
                     alt(ap(f)(x))(ap(g)(x)));
     }),
@@ -21,6 +23,7 @@ module.exports = function(equals, A) {
     //  zero <*> x = zero
     annihilation: assert.forall1(function(x) {
       return Z.Alternative.test(x) &&
+             Z.Alternative.test(zero) &&
              equals(ap(zero)(x),
                     zero);
     })

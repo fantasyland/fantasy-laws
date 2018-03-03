@@ -13,6 +13,7 @@ module.exports = function(equals, M) {
     //  empty <> m = m
     leftIdentity: assert.forall1(function(m) {
       return Z.Monoid.test(m) &&
+             Z.Monoid.test(empty) &&
              equals(concat(empty)(m),
                     m);
     }),
@@ -20,6 +21,7 @@ module.exports = function(equals, M) {
     //  m <> empty = m
     rightIdentity: assert.forall1(function(m) {
       return Z.Monoid.test(m) &&
+             Z.Monoid.test(empty) &&
              equals(concat(m)(empty),
                     m);
     })
