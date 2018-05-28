@@ -5,8 +5,9 @@ algebraic data types.
 
 ## Installation
 
-Add `fantasy-laws`, [`jsverify`][2], and [`sanctuary-type-classes`][3] to
-`"devDependencies"` in __package.json__, then run `npm install`.
+Add `fantasy-laws`, [`jsverify`][2], [`sanctuary-show`][3], and
+[`sanctuary-type-classes`][4] to `"devDependencies"` in __package.json__,
+then run `npm install`.
 
 ## Usage
 
@@ -40,11 +41,13 @@ Sum.prototype['fantasy-land/invert'] = function() {
 
 The following steps demonstrate how to test the Group laws:
 
-1.  Require `fantasy-laws`, `jsverify`, and `sanctuary-type-classes`:
+1.  Require `fantasy-laws`, `jsverify`, `sanctuary-show`, and
+    `sanctuary-type-classes`:
 
     ```javascript
     const laws = require ('fantasy-laws');
     const jsc = require ('jsverify');
+    const show = require ('sanctuary-show');
     const Z = require ('sanctuary-type-classes');
     ```
 
@@ -54,11 +57,11 @@ The following steps demonstrate how to test the Group laws:
     const Sum = require ('../Sum');
     ```
 
-3.  Define an ["arbitrary"][4] for the type:
+3.  Define an ["arbitrary"][5] for the type:
 
     ```javascript
     //    SumArb :: Arbitrary Sum
-    const SumArb = jsc.number.smap (Sum, sum => sum.value, Z.toString);
+    const SumArb = jsc.number.smap (Sum, sum => sum.value, show);
     ```
 
 4.  Provide the fixed parameters to `laws.Group`:
@@ -90,5 +93,6 @@ The following steps demonstrate how to test the Group laws:
 
 [1]: https://github.com/fantasyland/fantasy-land
 [2]: https://github.com/jsverify/jsverify
-[3]: https://github.com/sanctuary-js/sanctuary-type-classes
-[4]: https://github.com/jsverify/jsverify#arbitrary-data
+[3]: https://github.com/sanctuary-js/sanctuary-show
+[4]: https://github.com/sanctuary-js/sanctuary-type-classes
+[5]: https://github.com/jsverify/jsverify#arbitrary-data

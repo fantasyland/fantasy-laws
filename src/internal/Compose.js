@@ -1,6 +1,9 @@
 'use strict';
 
+var util = require ('util');
+
 var FL = require ('fantasy-land');
+var show = require ('sanctuary-show');
 var Z = require ('sanctuary-type-classes');
 
 var ap = require ('./ap');
@@ -41,11 +44,13 @@ module.exports = curry2 (function(F, G) {
              typeRep.name;
   }
 
-  Compose.prototype.inspect =
-  Compose.prototype.toString = function() {
-    return 'Compose(' + name (F) + ')' +
-                  '(' + name (G) + ')' +
-                  '(' + Z.toString (this.value) + ')';
+  var inspect = typeof util.inspect.custom === 'symbol' ? util.inspect.custom
+                                                        : 'inspect';
+  Compose.prototype[inspect] =
+  Compose.prototype['@@show'] = function() {
+    return 'Compose (' + name (F) + ')' +
+                  ' (' + name (G) + ')' +
+                  ' (' + show (this.value) + ')';
   };
 
   return Compose;
