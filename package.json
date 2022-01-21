@@ -15,7 +15,7 @@
     "/package.json"
   ],
   "dependencies": {
-    "fantasy-land": "3.5.x",
+    "fantasy-land": "4.0.x",
     "jsverify": "0.8.x",
     "sanctuary-show": "3.0.0",
     "sanctuary-type-classes": "13.0.0"
