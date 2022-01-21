@@ -18,7 +18,7 @@
     "fantasy-land": "3.5.x",
     "jsverify": "0.8.x",
     "sanctuary-show": "3.0.0",
-    "sanctuary-type-classes": "12.0.0"
+    "sanctuary-type-classes": "12.1.0"
   },
   "devDependencies": {
     "sanctuary-scripts": "5.0.x"
