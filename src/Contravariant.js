@@ -1,29 +1,27 @@
 'use strict';
 
-var Z = require ('sanctuary-type-classes');
+const Z = require ('sanctuary-type-classes');
 
-var assert = require ('./internal/assert');
-var compose = require ('./internal/compose_');
-var contramap = require ('./internal/contramap');
-var identity = require ('./internal/identity');
+const assert = require ('./internal/assert');
+const compose = require ('./internal/compose_');
+const contramap = require ('./internal/contramap');
+const identity = require ('./internal/identity');
 
 
-module.exports = function(equals) {
-  return {
+module.exports = equals => ({
 
-    //  contramap identity u = u
-    identity: assert.forall1 (function(u) {
-      return Z.Contravariant.test (u) &&
-             equals (contramap (identity) (u),
-                     u);
-    }),
+  //  contramap identity u = u
+  identity: assert.forall1 (u =>
+    Z.Contravariant.test (u) &&
+    equals (contramap (identity) (u),
+            u)
+  ),
 
-    //  contramap (f . g) u = (contramap g . contramap f) u
-    composition: assert.forall3 (function(u, f, g) {
-      return Z.Contravariant.test (u) &&
-             equals (contramap (compose (f) (g)) (u),
-                     compose (contramap (g)) (contramap (f)) (u));
-    })
+  //  contramap (f . g) u = (contramap g . contramap f) u
+  composition: assert.forall3 (u => f => g =>
+    Z.Contravariant.test (u) &&
+    equals (contramap (compose (f) (g)) (u),
+            compose (contramap (g)) (contramap (f)) (u))
+  ),
 
-  };
-};
+});

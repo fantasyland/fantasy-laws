@@ -1,29 +1,27 @@
 'use strict';
 
-var Z = require ('sanctuary-type-classes');
+const Z = require ('sanctuary-type-classes');
 
-var assert = require ('./internal/assert');
-var compose = require ('./internal/compose_');
-var identity = require ('./internal/identity');
-var promap = require ('./internal/promap');
+const assert = require ('./internal/assert');
+const compose = require ('./internal/compose_');
+const identity = require ('./internal/identity');
+const promap = require ('./internal/promap');
 
 
-module.exports = function(equals) {
-  return {
+module.exports = equals => ({
 
-    //  promap identity identity p = p
-    identity: assert.forall1 (function(p) {
-      return Z.Profunctor.test (p) &&
-             equals (promap (identity) (identity) (p),
-                     p);
-    }),
+  //  promap identity identity p = p
+  identity: assert.forall1 (p =>
+    Z.Profunctor.test (p) &&
+    equals (promap (identity) (identity) (p),
+            p)
+  ),
 
-    //  promap (f . g) (h . i) p = (promap g h . promap f i) p
-    composition: assert.forall5 (function(p, f, g, h, i) {
-      return Z.Profunctor.test (p) &&
-             equals (promap (compose (f) (g)) (compose (h) (i)) (p),
-                     compose (promap (g) (h)) (promap (f) (i)) (p));
-    })
+  //  promap (f . g) (h . i) p = (promap g h . promap f i) p
+  composition: assert.forall5 (p => f => g => h => i =>
+    Z.Profunctor.test (p) &&
+    equals (promap (compose (f) (g)) (compose (h) (i)) (p),
+            compose (promap (g) (h)) (promap (f) (i)) (p))
+  ),
 
-  };
-};
+});

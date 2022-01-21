@@ -24,5 +24,5 @@ module.exports = {
   Semigroup: require ('./src/Semigroup'),
   Semigroupoid: require ('./src/Semigroupoid'),
   Setoid: require ('./src/Setoid'),
-  Traversable: require ('./src/Traversable')
+  Traversable: require ('./src/Traversable'),
 };

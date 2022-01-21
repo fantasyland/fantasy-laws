@@ -1,28 +1,26 @@
 'use strict';
 
-var Z = require ('sanctuary-type-classes');
+const Z = require ('sanctuary-type-classes');
 
-var assert = require ('./internal/assert');
-var compose = require ('./internal/compose_');
-var id = require ('./internal/id');
+const assert = require ('./internal/assert');
+const compose = require ('./internal/compose_');
+const id = require ('./internal/id');
 
 
-module.exports = function(equals) {
-  return {
+module.exports = equals => ({
 
-    //  a `compose` id C = a
-    leftIdentity: assert.forall2 (function(C, a) {
-      return Z.Category.test (a) &&
-             equals (compose (a) (id (C)),
-                     a);
-    }),
+  //  a `compose` id C = a
+  leftIdentity: assert.forall2 (C => a =>
+    Z.Category.test (a) &&
+    equals (compose (a) (id (C)),
+            a)
+  ),
 
-    //  id C `compose` a = a
-    rightIdentity: assert.forall2 (function(C, a) {
-      return Z.Category.test (a) &&
-             equals (compose (id (C)) (a),
-                     a);
-    })
+  //  id C `compose` a = a
+  rightIdentity: assert.forall2 (C => a =>
+    Z.Category.test (a) &&
+    equals (compose (id (C)) (a),
+            a)
+  ),
 
-  };
-};
+});
