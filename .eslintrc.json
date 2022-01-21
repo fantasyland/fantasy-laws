@@ -5,11 +5,13 @@
   "rules": {
     "max-len": ["off"]
   },
-  "overrides": {
-    "files": ["*.md"],
-    "rules": {
-      "no-undef": ["off"],
-      "no-unused-vars": ["off"]
+  "overrides": [
+    {
+      "files": ["*.md"],
+      "rules": {
+        "no-undef": ["off"],
+        "no-unused-vars": ["off"]
+      }
     }
-  }
+  ]
 }
