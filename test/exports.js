@@ -4,7 +4,7 @@ const L = require ('..');
 const Z = require ('sanctuary-type-classes');
 
 const ls = ((Object.keys (L)).sort ());
-const zs = ((Object.keys (Z)).sort ()).filter (k => Z[k].constructor['@@type'] === 'sanctuary-type-classes/TypeClass@1');
+const zs = ((Object.keys (Z)).sort ()).filter (k => Z[k]['@@type'] === 'sanctuary-type-classes/TypeClass@1');
 
 const col = '                    ';
 let valid = true;
