@@ -21,7 +21,7 @@
     "sanctuary-type-classes": "9.0.0"
   },
   "devDependencies": {
-    "sanctuary-scripts": "3.2.x"
+    "sanctuary-scripts": "4.0.x"
   },
   "peerDependencies": {
     "jsverify": "0.8.x"
