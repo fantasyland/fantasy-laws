@@ -1,6 +1,6 @@
 {
   "name": "fantasy-laws",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Property-based tests for Fantasy Land -compliant algebraic data types",
   "license": "MIT",
   "repository": {
