@@ -1,8 +1,6 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const curry3 = require ('./curry3');
+import curry3 from './curry3.js';
 
 //  promap :: Profunctor p => (a -> b) -> (c -> d) -> p b c -> p a d
-module.exports = curry3 (Z.promap);
+export default curry3 (Z.promap);

@@ -1,13 +1,11 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const alt = require ('./internal/alt');
-const assert = require ('./internal/assert');
-const map = require ('./internal/map');
+import alt from './internal/alt.js';
+import assert from './internal/assert.js';
+import map from './internal/map.js';
 
 
-module.exports = (equals, P) => {
+export default (equals, P) => {
   const zero = Z.zero (P);
   return {
 

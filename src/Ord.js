@@ -1,11 +1,9 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const assert = require ('./internal/assert');
+import assert from './internal/assert.js';
 
 
-module.exports = {
+export default {
 
   //  a `lte` b || b `lte` a
   totality: assert.forall2 (a => b =>

@@ -1,12 +1,10 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const assert = require ('./internal/assert');
-const concat = require ('./internal/concat');
+import assert from './internal/assert.js';
+import concat from './internal/concat.js';
 
 
-module.exports = equals => ({
+export default equals => ({
 
   //  (x <> y) <> z = x <> (y <> z)
   associativity: assert.forall3 (x => y => z =>

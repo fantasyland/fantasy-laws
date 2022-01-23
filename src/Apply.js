@@ -1,14 +1,12 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const ap = require ('./internal/ap');
-const assert = require ('./internal/assert');
-const compose = require ('./internal/compose_');
-const map = require ('./internal/map');
+import ap from './internal/ap.js';
+import assert from './internal/assert.js';
+import compose from './internal/compose_.js';
+import map from './internal/map.js';
 
 
-module.exports = equals => ({
+export default equals => ({
 
   //  (.) <$> u <*> v <*> w = u <*> (v <*> w)
   composition: assert.forall3 (u => v => w =>

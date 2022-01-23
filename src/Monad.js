@@ -1,13 +1,11 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const assert = require ('./internal/assert');
-const chain = require ('./internal/chain');
-const of = require ('./internal/of');
+import assert from './internal/assert.js';
+import chain from './internal/chain.js';
+import of from './internal/of.js';
 
 
-module.exports = (equals, M) => {
+export default (equals, M) => {
   const pure = of (M);
   return {
 

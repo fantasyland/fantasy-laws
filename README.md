@@ -41,20 +41,20 @@ Sum.prototype['fantasy-land/invert'] = function() {
 
 The following steps demonstrate how to test the Group laws:
 
-1.  Require `fantasy-laws`, `jsverify`, `sanctuary-show`, and
+1.  Import `fantasy-laws`, `jsverify`, `sanctuary-show`, and
     `sanctuary-type-classes`:
 
     ```javascript
-    const laws = require ('fantasy-laws');
-    const jsc = require ('jsverify');
-    const show = require ('sanctuary-show');
-    const Z = require ('sanctuary-type-classes');
+    import laws from 'fantasy-laws';
+    import jsc from 'jsverify';
+    import show from 'sanctuary-show';
+    import Z from 'sanctuary-type-classes';
     ```
 
-2.  Require the type to be tested:
+2.  Import the type to be tested:
 
     ```javascript
-    const Sum = require ('../Sum');
+    import Sum from '../Sum.js';
     ```
 
 3.  Define an ["arbitrary"][5] for the type:

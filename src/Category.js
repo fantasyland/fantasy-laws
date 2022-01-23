@@ -1,13 +1,11 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const assert = require ('./internal/assert');
-const compose = require ('./internal/compose_');
-const id = require ('./internal/id');
+import assert from './internal/assert.js';
+import compose from './internal/compose_.js';
+import id from './internal/id.js';
 
 
-module.exports = equals => ({
+export default equals => ({
 
   //  a `compose` id C = a
   leftIdentity: assert.forall2 (C => a =>

@@ -1,4 +1,2 @@
-'use strict';
-
 //  $ :: a -> (a -> b) -> b
-module.exports = x => f => f (x);
+export default x => f => f (x);

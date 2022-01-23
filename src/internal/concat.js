@@ -1,8 +1,6 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const curry2 = require ('./curry2');
+import curry2 from './curry2.js';
 
 //  concat :: Semigroup a => a -> a -> a
-module.exports = curry2 (Z.concat);
+export default curry2 (Z.concat);

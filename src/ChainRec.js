@@ -1,12 +1,10 @@
-'use strict';
-
-const assert = require ('./internal/assert');
-const chain = require ('./internal/chain');
-const chainRec = require ('./internal/chainRec');
-const map = require ('./internal/map');
+import assert from './internal/assert.js';
+import chain from './internal/chain.js';
+import chainRec from './internal/chainRec.js';
+import map from './internal/map.js';
 
 
-module.exports = (equals, CR) => ({
+export default (equals, CR) => ({
 
   equivalence: assert.forall4 (p => n => d => i =>
     equals (chainRec (CR) ((next, done, v) => p (v) ? map (done) (d (v)) : map (next) (n (v))) (i),

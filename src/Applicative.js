@@ -1,15 +1,13 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const $ = require ('./internal/$');
-const ap = require ('./internal/ap');
-const assert = require ('./internal/assert');
-const identity = require ('./internal/identity');
-const of = require ('./internal/of');
+import $ from './internal/$.js';
+import ap from './internal/ap.js';
+import assert from './internal/assert.js';
+import identity from './internal/identity.js';
+import of from './internal/of.js';
 
 
-module.exports = (equals, A) => {
+export default (equals, A) => {
   const pure = of (A);
   return {
 

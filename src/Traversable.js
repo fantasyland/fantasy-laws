@@ -1,16 +1,14 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const Compose = require ('./internal/Compose');
-const assert = require ('./internal/assert');
-const identity = require ('./internal/identity');
-const map = require ('./internal/map');
-const of = require ('./internal/of');
-const traverse = require ('./internal/traverse');
+import Compose from './internal/Compose.js';
+import assert from './internal/assert.js';
+import identity from './internal/identity.js';
+import map from './internal/map.js';
+import of from './internal/of.js';
+import traverse from './internal/traverse.js';
 
 
-module.exports = equals => ({
+export default equals => ({
 
   //  t (traverse F identity u) = traverse G t u
   naturality: assert.forall4 (F => G => t => u =>

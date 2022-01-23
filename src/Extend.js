@@ -1,13 +1,11 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const assert = require ('./internal/assert');
-const compose = require ('./internal/compose_');
-const extend = require ('./internal/extend');
+import assert from './internal/assert.js';
+import compose from './internal/compose_.js';
+import extend from './internal/extend.js';
 
 
-module.exports = equals => ({
+export default equals => ({
 
   //  (extend f . extend g) w = extend (f . extend g) w
   associativity: assert.forall3 (w => f => g =>

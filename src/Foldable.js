@@ -1,12 +1,10 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const assert = require ('./internal/assert');
-const reduce = require ('./internal/reduce');
+import assert from './internal/assert.js';
+import reduce from './internal/reduce.js';
 
 
-module.exports = equals => ({
+export default equals => ({
 
   //  reduce f x u = reduce f x (reduce (\xs x -> xs ++ [x]) [] u)
   associativity: assert.forall3 (f => x => u =>

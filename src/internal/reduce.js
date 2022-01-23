@@ -1,8 +1,6 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const curry3 = require ('./curry3');
+import curry3 from './curry3.js';
 
 //  reduce :: Foldable f => ((b, a) -> b) -> b -> f a -> b
-module.exports = curry3 (Z.reduce);
+export default curry3 (Z.reduce);

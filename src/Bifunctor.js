@@ -1,14 +1,12 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const assert = require ('./internal/assert');
-const bimap = require ('./internal/bimap');
-const compose = require ('./internal/compose_');
-const identity = require ('./internal/identity');
+import assert from './internal/assert.js';
+import bimap from './internal/bimap.js';
+import compose from './internal/compose_.js';
+import identity from './internal/identity.js';
 
 
-module.exports = equals => ({
+export default equals => ({
 
   //  bimap identity identity p = p
   identity: assert.forall1 (p =>
