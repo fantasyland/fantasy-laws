@@ -1,6 +1,4 @@
-'use strict';
-
-const Z = require ('sanctuary-type-classes');
+import Z from 'sanctuary-type-classes';
 
 //  extract :: Comonad w => w a -> a
-module.exports = Z.extract;
+export default Z.extract;

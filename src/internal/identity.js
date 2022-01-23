@@ -1,4 +1,2 @@
-'use strict';
-
 //  identity :: a -> a
-module.exports = x => x;
+export default x => x;

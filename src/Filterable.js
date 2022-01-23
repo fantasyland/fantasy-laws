@@ -1,12 +1,10 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const assert = require ('./internal/assert');
-const filter = require ('./internal/filter');
+import assert from './internal/assert.js';
+import filter from './internal/filter.js';
 
 
-module.exports = equals => ({
+export default equals => ({
 
   //  filter (\x -> p x && q x) v = filter q (filter p v)
   distributivity: assert.forall3 (v => p => q =>

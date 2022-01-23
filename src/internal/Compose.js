@@ -1,16 +1,14 @@
-'use strict';
+import * as FL from 'fantasy-land';
+import show from 'sanctuary-show';
+import Z from 'sanctuary-type-classes';
 
-const FL = require ('fantasy-land');
-const show = require ('sanctuary-show');
-const Z = require ('sanctuary-type-classes');
-
-const ap = require ('./ap');
-const map = require ('./map');
-const of = require ('./of');
+import ap from './ap.js';
+import map from './map.js';
+import of from './of.js';
 
 
 //  Compose :: (Apply f, Apply g) => TypeRep f -> TypeRep g -> f (g a) -> Compose f g a
-module.exports = F => G => {
+export default F => G => {
   function Compose(value) {
     if (!(this instanceof Compose)) return new Compose (value);
     this.value = value;

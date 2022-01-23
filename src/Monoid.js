@@ -1,12 +1,10 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const assert = require ('./internal/assert');
-const concat = require ('./internal/concat');
+import assert from './internal/assert.js';
+import concat from './internal/concat.js';
 
 
-module.exports = (equals, M) => {
+export default (equals, M) => {
   const empty = Z.empty (M);
   return {
 

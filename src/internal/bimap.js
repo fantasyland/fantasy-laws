@@ -1,8 +1,6 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const curry3 = require ('./curry3');
+import curry3 from './curry3.js';
 
 //  bimap :: Bifunctor f => (a -> b) -> (c -> d) -> f a c -> f b d
-module.exports = curry3 (Z.bimap);
+export default curry3 (Z.bimap);

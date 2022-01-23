@@ -1,6 +1,4 @@
-'use strict';
-
-const Z = require ('sanctuary-type-classes');
+import Z from 'sanctuary-type-classes';
 
 //  invert :: Group g => g -> g
-module.exports = Z.invert;
+export default Z.invert;

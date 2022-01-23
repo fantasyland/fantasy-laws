@@ -1,8 +1,6 @@
-'use strict';
+import Z from 'sanctuary-type-classes';
 
-const Z = require ('sanctuary-type-classes');
-
-const curry2 = require ('./curry2');
+import curry2 from './curry2.js';
 
 //  chain :: Chain m => (a -> m b) -> m a -> m b
-module.exports = curry2 (Z.chain);
+export default curry2 (Z.chain);

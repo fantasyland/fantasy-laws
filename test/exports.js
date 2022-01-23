@@ -1,7 +1,5 @@
-'use strict';
-
-const L = require ('..');
-const Z = require ('sanctuary-type-classes');
+import L from '../index.js';
+import Z from 'sanctuary-type-classes';
 
 const ls = ((Object.keys (L)).sort ());
 const zs = ((Object.keys (Z)).sort ()).filter (k => Z[k]['@@type'] === 'sanctuary-type-classes/TypeClass@1');
