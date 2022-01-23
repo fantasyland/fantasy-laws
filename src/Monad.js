@@ -1,28 +1,28 @@
 'use strict';
 
-var Z = require ('sanctuary-type-classes');
+const Z = require ('sanctuary-type-classes');
 
-var assert = require ('./internal/assert');
-var chain = require ('./internal/chain');
-var of = require ('./internal/of');
+const assert = require ('./internal/assert');
+const chain = require ('./internal/chain');
+const of = require ('./internal/of');
 
 
-module.exports = function(equals, M) {
-  var pure = of (M);
+module.exports = (equals, M) => {
+  const pure = of (M);
   return {
 
     //  pure x >>= f = f x
-    leftIdentity: assert.forall2 (function(f, x) {
-      return equals (chain (f) (pure (x)),
-                     f (x));
-    }),
+    leftIdentity: assert.forall2 (f => x =>
+      equals (chain (f) (pure (x)),
+              f (x))
+    ),
 
     //  m >>= pure = m
-    rightIdentity: assert.forall1 (function(m) {
-      return Z.Monad.test (m) &&
-             equals (chain (pure) (m),
-                     m);
-    })
+    rightIdentity: assert.forall1 (m =>
+      Z.Monad.test (m) &&
+      equals (chain (pure) (m),
+              m)
+    ),
 
   };
 };

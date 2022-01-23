@@ -1,4 +1,4 @@
 'use strict';
 
 //  identity :: a -> a
-module.exports = function(x) { return x; };
+module.exports = x => x;

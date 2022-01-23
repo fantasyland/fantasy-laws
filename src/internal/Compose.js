@@ -1,19 +1,16 @@
 'use strict';
 
-var util = require ('util');
+const FL = require ('fantasy-land');
+const show = require ('sanctuary-show');
+const Z = require ('sanctuary-type-classes');
 
-var FL = require ('fantasy-land');
-var show = require ('sanctuary-show');
-var Z = require ('sanctuary-type-classes');
-
-var ap = require ('./ap');
-var curry2 = require ('./curry2');
-var map = require ('./map');
-var of = require ('./of');
+const ap = require ('./ap');
+const map = require ('./map');
+const of = require ('./of');
 
 
 //  Compose :: (Apply f, Apply g) => TypeRep f -> TypeRep g -> f (g a) -> Compose f g a
-module.exports = curry2 (function(F, G) {
+module.exports = F => G => {
   function Compose(value) {
     if (!(this instanceof Compose)) return new Compose (value);
     this.value = value;
@@ -21,9 +18,9 @@ module.exports = curry2 (function(F, G) {
 
   Compose['@@type'] = 'fantasy-laws/Compose';
 
-  Compose[FL.of] = function(x) {
-    return Compose (of (F) (of (G) (x)));
-  };
+  Compose[FL.of] = x => (
+    Compose (of (F) (of (G) (x)))
+  );
 
   Compose.prototype[FL.equals] = function(other) {
     return Z.equals (this.value, other.value);
@@ -38,15 +35,13 @@ module.exports = curry2 (function(F, G) {
   };
 
   //  name :: TypeRep a -> String
-  function name(typeRep) {
-    return typeof typeRep['@@type'] === 'string' ?
-             typeRep['@@type'].replace (/^[^/]*[/]/, '') :
-             typeRep.name;
-  }
+  const name = typeRep => (
+    typeof typeRep['@@type'] === 'string'
+    ? typeRep['@@type'].replace (/^[^/]*[/]/, '')
+    : typeRep.name
+  );
 
-  var inspect = typeof util.inspect.custom === 'symbol' ? util.inspect.custom
-                                                        : 'inspect';
-  Compose.prototype[inspect] =
+  Compose.prototype[Symbol.for ('nodejs.util.inspect.custom')] =
   Compose.prototype['@@show'] = function() {
     return 'Compose (' + name (F) + ')' +
                   ' (' + name (G) + ')' +
@@ -54,4 +49,4 @@ module.exports = curry2 (function(F, G) {
   };
 
   return Compose;
-});
+};
